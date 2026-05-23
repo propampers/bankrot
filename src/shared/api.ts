@@ -10,7 +10,7 @@ async function req<T>(path: string): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
     headers: {
       'X-Init-Data': getInitData(),
-      'bypass-tunnel-reminder': 'true',
+      'ngrok-skip-browser-warning': 'true',
     },
   })
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
