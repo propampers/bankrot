@@ -1,6 +1,6 @@
 import { AnalysisFull, AnalysisSummary, GraphData, Stats } from './types'
 
-const BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
+const BASE = import.meta.env.VITE_API_URL ?? 'https://spoils-immovably-huntsman.ngrok-free.dev'
 
 function getInitData(): string {
   return window.Telegram?.WebApp?.initData ?? ''
