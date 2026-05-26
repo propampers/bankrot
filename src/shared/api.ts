@@ -12,10 +12,13 @@ async function req<T>(path: string, options?: RequestInit): Promise<T> {
     headers: {
       'X-Init-Data': getInitData(),
       'ngrok-skip-browser-warning': 'true',
-      ...options?.headers,
+      ...(options?.headers ?? {}),
     },
   })
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
+  if (!res.ok) {
+    const body = await res.text().catch(() => '')
+    throw new Error(`HTTP ${res.status}: ${body.slice(0, 100)}`)
+  }
   return res.json()
 }
 

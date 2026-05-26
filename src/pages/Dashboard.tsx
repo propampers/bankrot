@@ -18,7 +18,7 @@ export default function Dashboard() {
     setLoading(true)
     api.analyses(savedOnly)
       .then(setList)
-      .catch(() => setError('Не удалось загрузить'))
+      .catch((e: unknown) => setError(e instanceof Error ? e.message : 'Ошибка загрузки'))
       .finally(() => setLoading(false))
   }
 
