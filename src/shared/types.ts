@@ -4,10 +4,30 @@ export interface AnalysisSummary {
   input_type: 'text' | 'pdf' | 'docx' | 'image'
   created_at: string
   verdict: Verdict
+  is_saved: boolean
 }
 
 export interface AnalysisFull extends AnalysisSummary {
   result: string
+}
+
+export interface GraphNode {
+  id: string
+  nodeType: 'company_main' | 'company' | 'person'
+  label: string
+  role?: string
+}
+
+export interface GraphEdge {
+  id: string
+  source: string
+  target: string
+  label?: string
+}
+
+export interface GraphData {
+  nodes: GraphNode[]
+  edges: GraphEdge[]
 }
 
 export interface Stats {
